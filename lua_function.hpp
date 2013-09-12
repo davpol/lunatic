@@ -170,6 +170,8 @@ public:
 		lua_getglobal(L_, name_);
 		const auto num_args = detail::push_lua_args(L_, args...);
 		assert(lua_pcall(L_, num_args, 1, 0) == 0);
+		lua_pop(L_, 1);
+		assert(lua_gettop(L_) == 0);
 	}
 };
 
