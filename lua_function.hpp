@@ -121,14 +121,13 @@ public:
 	lua_function_base(lua_State* L, const char* name)
 		: L_(L), name_(name) {}
 
+	// Disable copying.
+	lua_function_base(const lua_function_base&) = delete;
+	lua_function_base& operator=(const lua_function_base&) = delete;
+
 protected:
 	lua_State* L_;
 	const char* name_;
-
-private:
-	// Disable copying.
-	lua_function_base(const lua_function_base&);
-	lua_function_base& operator=(const lua_function_base&);
 };
 
 } // namespace detail
